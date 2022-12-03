@@ -10,11 +10,14 @@ admin.post("/register", (req, res) => {
     client.connect((err, client, done) => {
         if (err) {
             res.send("Client connection error")
+            return
         }
         client.query("Select * from usuarios where username = $1", [username], (err, result) => {
             if (err) {
-                res.send("Query error")
+                res.send(err)
+                return
             }
+            console.log(result)
             if (result.rows.length > 0) {
                 res.send({
                     message: "Usuario ya existe",
@@ -25,14 +28,13 @@ admin.post("/register", (req, res) => {
                 client.query("INSERT INTO usuarios(username, password) VALUES ($1, $2)", [username, password], (err, result) => {
                     done()
                     if (err) {
-                        res.send("Query error")
+                        res.send(err)
                     } else {
-                        res.send(result)
+                        res.send("Usuario creado")
                     }
                 });
             }
         });
-
     })
 })
 
