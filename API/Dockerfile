@@ -16,11 +16,6 @@ COPY . .
 # Expose port 3000
 EXPOSE 3000
 
-WORKDIR /app/database
-# Run the app when the container launches
-RUN npx sequelize-cli db:migrate
-
-WORKDIR /app
 
 # Run the app when the container is started
 CMD ["npm","run","dev"]

@@ -17,11 +17,10 @@ admin.post("/register", (req, res) => {
                 res.send(err)
                 return
             }
-            console.log(result)
             if (result.rows.length > 0) {
                 res.send({
                     message: "Usuario ya existe",
-                    data: result.rows,
+                    data: result.rows[0],
                 });
             }
             else {
@@ -30,7 +29,13 @@ admin.post("/register", (req, res) => {
                     if (err) {
                         res.send(err)
                     } else {
-                        res.send("Usuario creado")
+                        res.send({
+                            message: "Usuario creado",
+                            data: {
+                                username,
+                                password
+                            }
+                        })
                     }
                 });
             }

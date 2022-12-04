@@ -7,7 +7,7 @@ console.log(process.env.POSTGRES_DB)
 
 const client = new Pool({
     user: process.env.POSTGRES_USER,
-    host: process.env.POSTGRES_HOST,
+    host: "postgres",
     database: process.env.POSTGRES_DB,
     password: process.env.POSTGRES_PASSWORD,
     port: process.env.POSTGRES_PORT,

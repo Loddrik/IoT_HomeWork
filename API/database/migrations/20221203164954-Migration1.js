@@ -22,9 +22,9 @@ module.exports = {
     CREATE TABLE ubicaciones (
       id SERIAL PRIMARY KEY,
       companyId SERIAL NOT NULL REFERENCES companias(id),
-      locationName VARCHAR(50) NOT NULL,
-      locationCountry VARCHAR(50) NOT NULL,
-      locationCity VARCHAR(50) NOT NULL,
+      locationName VARCHAR(50),
+      locationCountry VARCHAR(50),
+      locationCity VARCHAR(50),
       locationMeta VARCHAR(50)
     );`
     )
@@ -33,7 +33,7 @@ module.exports = {
       id SERIAL PRIMARY KEY,
       locationId SERIAL NOT NULL REFERENCES ubicaciones(id),
       sensorName VARCHAR(50) NOT NULL,
-      sensorCategory VARCHAR(50) NOT NULL,
+      sensorCategory VARCHAR(50),
       sensorMeta VARCHAR(50),
       sensorApiKey VARCHAR(50) NOT NULL
     );`)

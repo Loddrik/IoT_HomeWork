@@ -1,18 +1,17 @@
 version: '3.1'
 services:
-  # postgres:
-  #   container_name: postgres
-  #   image: postgres
-  #   restart: always
-  #   environment:
-  #     POSTGRES_USER: user
-  #     POSTGRES_PASSWORD: password
-  #     POSTGRES_DB: mydb
-  #   ports:
-  #     - 5432:5432
-  #   volumes:
-  #     - ./Database/data:/var/lib/postgresql/data
-
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./Database/data:/var/lib/postgresql/data
   # pgadmin:
   #   container_name: pgadmin4_container
   #   image: dpage/pgadmin4
@@ -30,6 +29,8 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - db
+      - postgres
     env_file:
       - ./API/.env
+    volumes:
+      - ./API:/app
