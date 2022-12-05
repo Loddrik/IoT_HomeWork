@@ -22,15 +22,15 @@ services:
   #   ports:
   #     - "5050:80"
 
-  api:
-    container_name: api_container
-    build: ./API
-    restart: always
-    ports:
-      - "3000:3000"
-    depends_on:
-      - postgres
-    env_file:
-      - ./API/.env
-    volumes:
-      - ./API:/app
+  # api:
+  #   container_name: api_container
+  #   build: ./API
+  #   restart: always
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - postgres
+  #   env_file:
+  #     - ./API/.env
+  #   volumes:
+  #     - ./API:/app

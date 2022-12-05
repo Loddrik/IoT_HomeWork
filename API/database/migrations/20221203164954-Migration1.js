@@ -39,7 +39,6 @@ module.exports = {
     );`)
     await queryInterface.sequelize.query(`
     CREATE TABLE datos (
-      id SERIAL PRIMARY KEY,
       sensorId SERIAL NOT NULL REFERENCES sensores(id),
       dataValue VARCHAR(50) NOT NULL,
       dataValue2 VARCHAR(50) NOT NULL,
